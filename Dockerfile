@@ -7,5 +7,5 @@ EXPOSE 8080
 ADD /target/vprofile-v2.war vprofile-v2.war
 
 # Specify the command to run on container startup
-CMD ["java", "-war", "vprofile-v2.war"]
+CMD ["java", "-jar", "vprofile-v2.war"]
 
