@@ -10,7 +10,7 @@ COPY .  .
 EXPOSE 8080
 
 # Copy the JAR file from the build stage to the runtime stage
-COPY --from=build /app/target/vprofile-v2.jar .
+ADD /app/target/vprofile-v2.jar .
 
 # Specify the command to run on container startup
 CMD ["java", "-jar", "vprofile-v2.jar"]
