@@ -1,7 +1,7 @@
 # Use an official Maven image as the base image
 FROM openjdk:17
 
-EXPOSE 8080
+WORKDIR /app
 
 # Copy the JAR file from the build stage to the runtime stage
 ADD /target/vprofile-v2.war vprofile-v2.war
