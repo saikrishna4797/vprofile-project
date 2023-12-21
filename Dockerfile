@@ -1,5 +1,5 @@
 # Use an official Maven image as the base image
-FROM maven:3.9.4-openjdk-17 AS build
+FROM maven:3.9.4-openjdk-17.0.9 AS build
 
 # Set the working directory in the container
 WORKDIR /app
@@ -15,7 +15,7 @@ COPY src src
 RUN mvn clean package
 
 # Use an official OpenJDK runtime as the base image
-FROM openjdk:17
+FROM adoptopenjdk:17-jre-hotspot-slim
 
 # Set the working directory in the container
 WORKDIR /app
