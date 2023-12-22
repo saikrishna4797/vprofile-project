@@ -1,13 +1,14 @@
-# Use an official Maven image as the base image
-FROM openjdk:17
+# Use a base image with Tomcat and Java
+FROM tomcat:9
 
-WORKDIR /app
+# Remove the default Tomcat applications
+RUN rm -rf /usr/local/tomcat/webapps/*
 
-COPY .  .
+# Copy the WAR file into the Tomcat webapps directory
+COPY *.war /usr/local/tomcat/webapps/
 
-# Copy the JAR file from the build stage to the runtime stage
-ADD /target/vprofile-v2.war vprofile-v2.war
+# Expose the default Tomcat port
+EXPOSE 8081
 
-# Specify the command to run on container startup
-CMD ["java", "-war", "vprofile-v2.war"]
-
+# Start Tomcat
+CMD ["catalina.sh", "run"]
