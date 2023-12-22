@@ -5,7 +5,7 @@ FROM tomcat:9
 RUN rm -rf /opt/tomcat/webapps/*.war
 
 # Copy the WAR file into the Tomcat webapps directory
-COPY /var/lib/jenkins/workspace/pipeline-project/target/vprofile-v2.war /opt/tomcat/webapps/
+COPY /var/lib/jenkins/workspace/pipeline-project/target/*.war /opt/tomcat/webapps/
 
 # Expose the default Tomcat port
 EXPOSE 8080
