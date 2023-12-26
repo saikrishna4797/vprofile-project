@@ -1,13 +1,17 @@
-# Use a base image with Tomcat and Java
 FROM tomcat:9
 
-# Remove the default Tomcat applications
-RUN rm -rf /opt/tomcat/webapps/*
+# Set environment variables
+ENV CATALINA_BASE /opt/tomcat
+ENV CATALINA_HOME /opt/tomcat
+ENV PATH $CATALINA_HOME/bin:$PATH
 
-# Copy the WAR file into the Tomcat webapps directory
-COPY *.war /opt/tomcat/webapps/
+# Remove the default Tomcat webapps
+RUN rm -rf $CATALINA_BASE/webapps/*
 
-# Expose the default Tomcat port
+# Copy the war file into the webapps directory
+COPY target/*.war $CATALINA_BASE/webapps/*.war
+
+# Expose the port your app runs on
 EXPOSE 8080
 
 # Start Tomcat
