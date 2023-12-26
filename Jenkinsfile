@@ -22,7 +22,7 @@ pipeline {
             steps {
                 script {
                     // Run Docker container
-                    sh 'docker run -dit -p 80:80 --name vprofile-nginx-container vprofile'
+                    sh 'docker run -dit -p 8080:80 --name vprofile-nginx-container vprofile'
                 }
             }
         }
