@@ -27,15 +27,5 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-            // Clean up: Remove Docker image and container
-            script {
-                sh 'docker rm -f vprofile-nginx-container || true'
-                sh 'docker rmi vprofile:${BUILD_NUMBER} || true'
-            }
-        }
-    }
 }
 
